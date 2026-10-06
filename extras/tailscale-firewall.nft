@@ -1,0 +1,15 @@
+# Tailscale inserts "ts-input: -i tailscale0 -j ACCEPT" before ufw, so ufw rules cannot restrict the tailnet.
+# This table runs earlier (priority -10): krfb (5900) is never reachable from the tailnet (the pod uses the
+# host loopback) and the web port (8087) only from the reverse proxy. Replace 100.64.0.20 with its address.
+# Install: sudo cp tailscale-firewall.nft /etc/ && sudo nft -f /etc/tailscale-firewall.nft
+# (make it persistent with a oneshot systemd unit or your distribution's nftables service)
+add table inet guacamole_plasma
+delete table inet guacamole_plasma
+
+table inet guacamole_plasma {
+  chain input {
+    type filter hook input priority -10; policy accept;
+    iifname "tailscale0" ip saddr 100.64.0.20 tcp dport 8087 accept
+    iifname "tailscale0" tcp dport { 5900, 8087 } drop
+  }
+}

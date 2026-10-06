@@ -1,0 +1,8 @@
+# Never commit real configuration or secrets
+config.env
+*.env
+!config.example.env
+*.bak-*
+*.jar
+totp-qr.png
+__pycache__/

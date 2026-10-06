@@ -1,0 +1,22 @@
+{
+    "guacamoleVersion": "1.6.0",
+    "name": "guacamole-plasma-wayland",
+    "namespace": "gplasma",
+    "css": [
+        "css/theme.css"
+    ],
+    "js": [
+        "js/login.js",
+        "js/mobile.js",
+        "js/touch.js"
+    ],
+    "translations": [
+        "translations/es.json",
+        "translations/en.json"
+    ],
+    "resources": {
+        "images/icon-192.png": "image/png",
+        "images/icon-512.png": "image/png",
+        "app.webmanifest": "application/manifest+json"
+    }
+}

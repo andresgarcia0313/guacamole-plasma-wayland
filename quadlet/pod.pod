@@ -1,0 +1,8 @@
+[Pod]
+PodName=${GP_POD}
+# Lets the containers reach the host loopback (sshd and krfb) at host.containers.internal
+Network=pasta:--map-host-loopback,169.254.1.2
+PublishPort=${GP_BIND}:${GP_PORT}:8080
+
+[Install]
+WantedBy=default.target

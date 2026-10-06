@@ -1,0 +1,19 @@
+[Unit]
+Description=PostgreSQL of Apache Guacamole: users, connections and TOTP (${GP_POD})
+
+[Container]
+ContainerName=${GP_POD}-db
+Image=${GP_POSTGRES_IMAGE}
+Pod=${GP_POD}.pod
+EnvironmentFile=${GP_DATA_DIR}/db/db.env
+Volume=${GP_POD}-db-data:/var/lib/postgresql/data
+# The schema is applied only while the volume is empty (first start)
+Volume=${GP_DATA_DIR}/db/001-schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+HealthCmd=pg_isready -U guacamole -d guacamole_db
+HealthInterval=10s
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

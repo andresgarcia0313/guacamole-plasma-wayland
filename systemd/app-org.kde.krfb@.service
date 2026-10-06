@@ -1,0 +1,14 @@
+[Unit]
+Description=krfb (KDE VNC server) for guacamole-plasma-wayland
+# The app-<id>@<instance>.service name gives the process the app id org.kde.krfb, so the KDE portal finds
+# the stored permission (table kde-authorized) and never asks for approval again.
+After=graphical-session.target xdg-desktop-portal.service
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/krfb --nodialog
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

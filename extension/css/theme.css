@@ -1,0 +1,99 @@
+/* Dark theme for Apache Guacamole 1.6 plus mobile fixes (guacamole-plasma-wayland) */
+:root {
+    --gp-bg: #0b1020;
+    --gp-bg-2: #1e1b4b;
+    --gp-accent: #6366f1;
+}
+
+/* Login */
+.login-ui {
+    background: radial-gradient(circle at 50% 20%, var(--gp-bg-2), var(--gp-bg) 70%) !important;
+}
+.login-ui .login-dialog,
+.login-ui .login-dialog-middle {
+    background: var(--gp-bg) !important;
+    border: 1px solid rgba(99, 102, 241, 0.45) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+}
+.login-ui .version .version-number {
+    display: none !important;
+}
+.login-ui .app-name,
+.login-ui .login-dialog p,
+.login-ui .totp-code-field p {
+    color: #e2e8f0 !important;
+}
+/* The field label is drawn BEHIND the input: the light background goes on the wrapper */
+.login-ui .login-dialog .labeled-field {
+    background: #f8fafc !important;
+    border-radius: 3px;
+}
+.login-ui .login-dialog input[type="text"],
+.login-ui .login-dialog input[type="password"] {
+    background: transparent !important;
+    color: var(--gp-bg) !important;
+}
+.login-ui .labeled-field .field-header,
+.login-ui .labeled-field .field-header label {
+    color: #64748b !important;
+}
+.login-ui .login-dialog .buttons button,
+.login-ui .login-dialog input[type="submit"] {
+    background: var(--gp-accent) !important;
+    border-color: var(--gp-accent) !important;
+    color: #fff !important;
+}
+.login-ui .totp-code-field input {
+    letter-spacing: 0.3em;
+    text-align: center;
+    font-size: 1.3em;
+}
+.login-ui .totp-code-field input::placeholder {
+    letter-spacing: normal;
+    font-size: 0.75em;
+}
+
+/* Title bars inside the application */
+.header {
+    background-color: var(--gp-bg) !important;
+}
+.header h2,
+.header .user-menu a,
+.header .user-menu .menu-title,
+.header .filter input {
+    color: #f1f5f9 !important;
+}
+
+/* Mobile: no pull-to-refresh; floating buttons; session panel would cover the Esc/Tab keys */
+html, body {
+    overscroll-behavior: none !important;
+}
+#gp-menu-button,
+#gp-fit-button {
+    position: fixed;
+    left: 10px;
+    z-index: 2147483000;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(11, 16, 32, 0.55);
+    color: #fff;
+    font-size: 22px;
+    line-height: 42px;
+    padding: 0;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+#gp-menu-button { bottom: 14px; }
+#gp-fit-button { bottom: 66px; }
+#gp-menu-button:active,
+#gp-fit-button:active {
+    background: rgba(99, 102, 241, 0.85);
+}
+@media (max-width: 700px) {
+    .client-panel {
+        display: none !important;
+    }
+}

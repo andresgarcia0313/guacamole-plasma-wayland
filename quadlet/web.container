@@ -1,0 +1,33 @@
+[Unit]
+Description=Apache Guacamole web (${GP_POD})
+Requires=${GP_POD}-db.service
+After=${GP_POD}-db.service ${GP_POD}-guacd.service
+
+[Container]
+ContainerName=${GP_POD}-web
+Image=docker.io/guacamole/guacamole:${GP_GUAC_VERSION}
+Pod=${GP_POD}.pod
+Environment=GUACD_HOSTNAME=127.0.0.1
+Environment=GUACD_PORT=4822
+Environment=WEBAPP_CONTEXT=ROOT
+Environment=POSTGRESQL_HOSTNAME=127.0.0.1
+Environment=POSTGRESQL_PORT=5432
+Environment=POSTGRESQL_DATABASE=guacamole_db
+Environment=POSTGRESQL_USERNAME=guacamole
+# Only POSTGRESQL_* here: the POSTGRES_* variables of the database are deprecated in Guacamole
+EnvironmentFile=${GP_DATA_DIR}/db/web-db.env
+Environment=TOTP_ENABLED=${GP_TOTP}
+Environment="TOTP_ISSUER=${GP_TOTP_ISSUER}"
+Environment=BAN_ENABLED=true
+Environment=BAN_MAX_INVALID_ATTEMPTS=5
+Environment=BAN_ADDRESS_DURATION=900
+Environment=REMOTE_IP_VALVE_ENABLED=true
+Environment=REMOTE_IP_VALVE_INTERNAL_PROXIES=${GP_TRUSTED_PROXY_ESC}
+Environment=REMOTE_IP_VALVE_PROTOCOL_HEADER=X-Forwarded-Proto
+Volume=${GP_DATA_DIR}/extension/guacamole-plasma.jar:/etc/guacamole/extensions/guacamole-plasma.jar:ro
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

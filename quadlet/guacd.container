@@ -1,0 +1,13 @@
+[Unit]
+Description=guacd, protocol proxy of Apache Guacamole (${GP_POD})
+
+[Container]
+ContainerName=${GP_POD}-guacd
+Image=docker.io/guacamole/guacd:${GP_GUAC_VERSION}
+Pod=${GP_POD}.pod
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

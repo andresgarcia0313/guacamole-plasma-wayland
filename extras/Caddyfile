@@ -1,0 +1,5 @@
+# Simplest TLS reverse proxy on the same machine (GP_BIND=127.0.0.1). Caddy gets the certificate itself.
+# WebSockets work without extra settings.
+remote.example.com {
+    reverse_proxy 127.0.0.1:8087
+}

@@ -1,0 +1,11 @@
+/* Added by build.py only when a logo is configured (GP_LOGO) */
+.login-ui .logo {
+    background: url("app/ext/gplasma/images/logo.png") center / contain no-repeat !important;
+    width: 100% !important;
+    max-width: 320px;
+    height: 118px !important;
+    margin: 0 auto 1em auto;
+}
+.login-ui .app-name {
+    display: none !important;
+}

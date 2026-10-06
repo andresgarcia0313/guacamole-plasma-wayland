@@ -1,0 +1,12 @@
+[Unit]
+Description=Restarts krfb when its PipeWire screen stream breaks (avoids a frozen image)
+After=app-org.kde.krfb@guacamole.service
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=${GP_DATA_DIR}/bin/krfb-watchdog.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
