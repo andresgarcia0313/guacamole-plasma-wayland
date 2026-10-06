@@ -34,6 +34,11 @@ Tailscale, ufw cannot filter the tailnet: see `extras/tailscale-firewall.nft`.
 Requirements: Plasma 6.3+ on Wayland, `krfb`, Podman 4.4+ with `passt`, `python3`, `gettext-base`, `curl`
 and `openssh-server` for the terminal. Tested on Kubuntu 26.04, Plasma 6.6, krfb 25.12, Podman 5.7.
 
+## Docs
+
+Design decisions and discarded alternatives: [docs/arquitectura.md](docs/arquitectura.md). Step by step
+troubleshooting: [docs/solucion-de-problemas.md](docs/solucion-de-problemas.md) (Spanish).
+
 ## Tests
 
 `tests/static.sh` (lint, syntax, secret leaks), `tests/dry-run.sh` (simulated install in a temporary HOME)

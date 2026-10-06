@@ -85,6 +85,9 @@ cerrado** en tu cortafuegos: el contenedor llega a `krfb` por el loopback del eq
 
 ## Problemas resueltos
 
+Detalle de diseño en [docs/arquitectura.md](docs/arquitectura.md) y diagnóstico paso a paso en
+[docs/solucion-de-problemas.md](docs/solucion-de-problemas.md).
+
 | Problema | Causa | Solución |
 |---|---|---|
 | El cuadro «Control remoto» pide aprobar en cada arranque | `krfb` 25.12 no usa token de restauración del portal y corre sin identificador de aplicación | Unidad `app-org.kde.krfb@guacamole.service` y permiso previo en la tabla `kde-authorized` del almacén de permisos (Plasma 6.3+) |
@@ -134,3 +137,4 @@ no está afiliado a ella.
 | Versión | Fecha | Autor | Descripción del cambio |
 |---|---|---|---|
 | 1.0.0 | 2026-10-06 | Andrés García | Primera versión pública |
+| 1.0.1 | 2026-10-06 | Andrés García | Documentos de arquitectura y de solución de problemas |

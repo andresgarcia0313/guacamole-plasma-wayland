@@ -3,6 +3,12 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y versionado semántico.
 
+## [1.0.1] - 2026-10-06
+
+### Añadido
+- `docs/arquitectura.md`: flujo, decisiones y alternativas descartadas.
+- `docs/solucion-de-problemas.md`: diagnóstico de cada síntoma conocido.
+
 ## [1.0.0] - 2026-10-06
 
 ### Añadido
